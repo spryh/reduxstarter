@@ -1,7 +1,38 @@
-import React, { Component } from 'react'; //Libraries dont need paths
+import React, { Component } from 'react'; //Libraries dont need paths, CRA imports Component
 import logo from './logo.svg';
 import './App.css';
 import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
+import YTSearch from 'youtube-api-search';
+
+const API_KEY = 'AIzaSyBwnNqbRoNVMBvT6_8VY4pJ7pYzwAh6QAk';
+
+
+// const App = function(){
+// We can arrow the function in ES6
+
+class App extends Component{
+    //parenthesis for multi line returns
+    constructor(props){
+        super(props);
+        this.state = {app_videos:[]};
+        YTSearch({
+                key:API_KEY, term:'surfboards'},
+                (yt_videos) => {this.setState({app_videos:yt_videos})
+        });
+    }
+
+    render () {
+        return (
+            <div>
+                <SearchBar />
+                <VideoList videos = {this.state.app_videos} />
+            </div>
+        );
+    }
+}
+export default App;
+
 
 
 // Let's comment out the boilerplate from CRA for now...
@@ -22,20 +53,3 @@ class App extends Component {
   }
 }
 */
-
-
-
-const API_KEY = 'AIzaSyBwnNqbRoNVMBvT6_8VY4pJ7pYzwAh6QAk';
-
-
-// const App = function(){
-// We can arrow the function in ES6
-const App = () => {
-    //parenthesis for multi line returns
-    return (
-        <div>
-            <SearchBar />
-        </div>
-    );
-}
-export default App;

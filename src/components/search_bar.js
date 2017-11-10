@@ -1,6 +1,7 @@
 import React, {Component} from 'react'; //import React, pull React.Component as named variable
 
-/*
+/* This would be the simple function approach
+
 const SearchBar = () => {
     return <input/>
 };
@@ -10,8 +11,9 @@ const SearchBar = () => {
 class SearchBar extends Component {
     // all classes have a constructor object
     // it initializes
-    // super calls the inherited class
-    // term is a property we created to record state of search term
+    // "super" calls the inherited class
+    // "term" is a property we created to record state of search term
+
     constructor(props) {
 
         super(props);
@@ -19,7 +21,8 @@ class SearchBar extends Component {
         //state should only be touched this way inside a constructor
 
     }
-//controlled components have values saved by state
+
+    //controlled components have values saved by state
     render() {
         return (
             <div>
@@ -32,10 +35,10 @@ class SearchBar extends Component {
         );
     }
 
-    //return <input onChange=event => console.log(event.target.value)}/>;
-     //return <input onChange={event => this.setState({ term: event.target.value})}/>
+    /*return <input onChange=event => console.log(event.target.value)}/>;
+    return <input onChange={event => this.setState({ term: event.target.value})}/>
 
-    /*Event handler .. "on element event" naming convention
+    Event handler .. "on element event" naming convention
     onInputChange(event) {
         //console.log(event.target.value);
         this.setState({ term: event.target.value})
