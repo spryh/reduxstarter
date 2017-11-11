@@ -1,10 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import VideoListItem from './video_list_item';
 
 const VideoList = (props) => {
+    const videoItems = props.vl_videos.map(
+        (vl_video) => {
+            return <VideoListItem vli_video={vl_video} key={vl_video.etag}/>
+        }
+    );
 
     return(
-        <ul className='col-md-4 list-group'>{props.videos.length}</ul>
+        <ul className='col-md-4 list-group'>{/*{props.vl_videos.length} any props.video print the length*/}
+        {videoItems}
+        </ul>
     );
 };
 

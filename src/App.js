@@ -1,5 +1,4 @@
 import React, { Component } from 'react'; //Libraries dont need paths, CRA imports Component
-import logo from './logo.svg';
 import './App.css';
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
@@ -13,20 +12,21 @@ const API_KEY = 'AIzaSyBwnNqbRoNVMBvT6_8VY4pJ7pYzwAh6QAk';
 
 class App extends Component{
     //parenthesis for multi line returns
+
     constructor(props){
         super(props);
-        this.state = {app_videos:[]};
-        YTSearch({
-                key:API_KEY, term:'surfboards'},
-                (yt_videos) => {this.setState({app_videos:yt_videos})
-        });
+        this.state = {app_videos:[]}; // local app videos
+        YTSearch(
+            {key:API_KEY, term:'surfboards'},
+            (yt_videos) => {this.setState({app_videos:yt_videos})}
+        );
     }
 
     render () {
         return (
             <div>
                 <SearchBar />
-                <VideoList videos = {this.state.app_videos} />
+                <VideoList vl_videos = {this.state.app_videos} />
             </div>
         );
     }
