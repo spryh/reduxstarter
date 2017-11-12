@@ -1,14 +1,14 @@
 import React from 'react';
-import {Media, MediaLeft, MediaHeading, MediaBody, MediaObject} from 'react-bootstrap';
+//import {Media, MediaLeft, MediaHeading, MediaBody, MediaObject} from 'react-bootstrap';
 
-const VideoListItem = ({vli_video}) => {
+const VideoListItem = ({vli_video, onVideoSelect}) => {
     //we could have defined const VideoListItem = ({props}) and then const vli_video = props.vli_video;
     //console.log(vli_video);
 
     const imageURL = vli_video.snippet.thumbnails.default.url;
 
     return(
-        <li >
+        <li onClick={() => onVideoSelect(vli_video)} className="list-group-item">
             <div className="video-list media">
                 <div className="media-left">
                     <img className="media-object" src={imageURL}/>

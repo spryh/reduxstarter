@@ -1,11 +1,17 @@
 import React from 'react';
 import VideoListItem from './video_list_item';
-import {ListGroup} from 'react-bootstrap';
+//import {ListGroup} from 'react-bootstrap';
 
 const VideoList = (props) => {
     const videoItems = props.vl_videos.map(
         (vl_video) => {
-            return <VideoListItem vli_video={vl_video} key={vl_video.etag}/>
+            return (
+                <VideoListItem
+                vli_video={vl_video}
+                key={vl_video.etag}
+                onVideoSelect={props.onVideoSelect}
+                />
+            );
         }
     );
 

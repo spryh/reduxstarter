@@ -5,7 +5,6 @@ import VideoList from './components/video_list';
 import YTSearch from 'youtube-api-search';
 import VideoDetail from './components/video_detail';
 
-
 const API_KEY = 'AIzaSyBwnNqbRoNVMBvT6_8VY4pJ7pYzwAh6QAk';
 
 
@@ -18,20 +17,30 @@ class App extends Component{
     constructor(props){
         super(props);
 
-        this.state = {app_videos:[]}; // local app videos
-
+        this.state = {
+            app_videos:[], // local app videos
+            selected_video: null
+        };
         YTSearch(
             {key:API_KEY, term:'surfboards'},
-            (yt_videos) => {this.setState({app_videos:yt_videos})}
+            (yt_videos) => {
+                this.setState({
+                    app_videos:yt_videos,
+                    selected_video: yt_videos[0]
+                })
+            }
         );
     }
-
+//make sure to pass setState an object {}! on this multi-level callback!
     render () {
         return (
             <div>
                 <SearchBar />
-                <VideoDetail vli_video={this.state.app_videos[0]}/>
-                <VideoList vl_videos = {this.state.app_videos} />
+                <VideoDetail vli_video={this.state.selected_video}/>
+                <VideoList
+                    vl_videos = {this.state.app_videos}
+                    onVideoSelect={(selected_video) => this.setState({selected_video})}
+                />
             </div>
         );
     }

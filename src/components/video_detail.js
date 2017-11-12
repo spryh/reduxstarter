@@ -1,8 +1,8 @@
 import React from 'react';
-import {ResponsiveEmbed, Col} from 'react-bootstrap';
+import {ResponsiveEmbed, Col, Button} from 'react-bootstrap';
 
 const VideoDetail = ({vli_video}) => {
-
+    // given this is the first time we are hitting API, put a spinner...
     if (!vli_video) {return <div>loading...</div>}
 
     const url = `https://www.youtube.com/embed/${vli_video.id.videoId}`;
@@ -14,6 +14,8 @@ const VideoDetail = ({vli_video}) => {
             </div>
             <div className="details">
                 <div>    {vli_video.snippet.title}
+                </div>
+                <div>    <Button classname="btn btn-danger">Buy</Button>
                 </div>
                 <div>    {vli_video.snippet.description}
                 </div>
