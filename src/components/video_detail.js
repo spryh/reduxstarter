@@ -1,4 +1,5 @@
 import React from 'react';
+import {ResponsiveEmbed, Col} from 'react-bootstrap';
 
 const VideoDetail = ({vli_video}) => {
 

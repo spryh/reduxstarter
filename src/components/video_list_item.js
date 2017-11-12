@@ -1,4 +1,5 @@
 import React from 'react';
+import {Media, MediaLeft, MediaHeading, MediaBody, MediaObject} from 'react-bootstrap';
 
 const VideoListItem = ({vli_video}) => {
     //we could have defined const VideoListItem = ({props}) and then const vli_video = props.vli_video;

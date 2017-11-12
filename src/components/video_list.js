@@ -1,5 +1,6 @@
 import React from 'react';
 import VideoListItem from './video_list_item';
+import {ListGroup} from 'react-bootstrap';
 
 const VideoList = (props) => {
     const videoItems = props.vl_videos.map(
